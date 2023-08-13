@@ -2,8 +2,8 @@
 
 namespace App\Exceptions;
 
+use App\Modules\Shared\CurrencyRate\Exceptions\CurrencyNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -23,8 +23,11 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->reportable(function (CurrencyNotFoundException $e) {
+            echo "\n";
+            echo $e->getMessage();
+            echo "\n\n";
+            die;
         });
     }
 }
